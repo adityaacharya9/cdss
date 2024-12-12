@@ -1,7 +1,10 @@
-import gradio as gr
 import sqlite3
+import os
+import logging
+# Logging setup
+logging.basicConfig(level=logging.INFO)
 # Database Setup
-conn = sqlite3.connect('responses.db')
+conn = sqlite3.connect(os.path.join(os.getcwd(), 'responses.db'))
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS responses (id INTEGER PRIMARY KEY, name TEXT, report TEXT)''')
 conn.commit()
@@ -317,7 +320,10 @@ def interface():
         description="An AI-powered tool for stroke and heart risk analysis with severity-based recommendations."
     )
 
+if __name__ == "__main__":
+    logging.info("Launching the application...")
+    interface().launch(server_name="0.0.0.0", server_port=8080)
 
 
-interface().launch(share=True)
+
 
