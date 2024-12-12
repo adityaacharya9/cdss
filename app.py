@@ -322,12 +322,13 @@ def interface():
     )
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     logging.info("Launching the application...")
     try:
-        port = int(os.environ.get("PORT", 8080))  # Use PORT environment variable
+        port = int(os.environ.get("PORT", 8080))  # Default to 8080 if PORT is not set
+        logging.info(f"Starting server on 0.0.0.0:{port}")
         interface().launch(server_name="0.0.0.0", server_port=port)
     except Exception as e:
-    logging.error(f"Failed to start server on port {port}: {e}", exc_info=True)
-
+        logging.error(f"Failed to start server on port {port}: {e}", exc_info=True)
 
 
