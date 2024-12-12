@@ -1,4 +1,3 @@
-!pip install gradio
 import gradio as gr
 import sqlite3
 # Database Setup
