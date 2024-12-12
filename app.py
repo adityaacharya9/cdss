@@ -327,8 +327,7 @@ if __name__ == "__main__":
         port = int(os.environ.get("PORT", 8080))  # Use PORT environment variable
         interface().launch(server_name="0.0.0.0", server_port=port)
     except Exception as e:
-        logging.error("Failed to start server:", exc_info=True)
-
+    logging.error(f"Failed to start server on port {port}: {e}", exc_info=True)
 
 
 
