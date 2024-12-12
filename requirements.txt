@@ -1,4 +1,3 @@
 gradio
-sqlite3
 logging
 # Add any other dependencies
